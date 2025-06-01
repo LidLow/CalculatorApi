@@ -21,7 +21,7 @@ class CalculatorApplicationTests {
     private MockMvc mockMvc;
 
     @Autowired
-    private ObjectMapper objectMapper;  // для конвертации объекта в JSON
+    private ObjectMapper objectMapper;
 
     @Test
     public void testAddition() throws Exception {
@@ -34,7 +34,7 @@ class CalculatorApplicationTests {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(content().string("8")); // ожидаем результат 8
+                .andExpect(content().string("8"));
     }
 
     @Test
@@ -54,7 +54,7 @@ class CalculatorApplicationTests {
     @Test
     public void testInvalidRequest() throws Exception {
         var request = new CalculationRequest();
-        request.setA(null);  // a обязателен
+        request.setA(null);
         request.setB(3);
         request.setOp("add");
 
